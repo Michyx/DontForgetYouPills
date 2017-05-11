@@ -17,18 +17,20 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends JFrame implements ActionListener {
     
-    
+    private VentanaDetalle ventanaDetalle;
     private VentanaIngresarMedicamento ventanaIM;
     private PanelBotonesP panelBotones;
     private PanelProxAlarma panelAlarma;
     private PanelMedicamentosActivos panelMedicamentos;
+    
     
     public VentanaPrincipal() {
         initComponents();
     }
 
     private void initComponents() {
-         ventanaIM = new VentanaIngresarMedicamento();
+        ventanaDetalle = new VentanaDetalle();
+        ventanaIM = new VentanaIngresarMedicamento();
         añadirComponentes();
        
        this.setResizable(false);
@@ -63,7 +65,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, ("Exito eliminar"));
         }
           if(this.panelBotones.getBtnVerMedicamentos()== e.getSource()) {
-            JOptionPane.showMessageDialog(null, ("Exito ver detalle"));
+            this.ventanaDetalle.setVisible(true);
         }
     }
 }
