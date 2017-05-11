@@ -5,10 +5,12 @@
  */
 package views;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Loli Pop
  */
-public class PanelBotonesIM {
+public class PanelBotonesIM extends JPanel{
     
 }

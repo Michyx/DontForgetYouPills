@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dontforgetyoupills;
+package app;
+
+import principal.Programa;
 
 /**
  *
@@ -11,6 +13,7 @@ package com.mycompany.dontforgetyoupills;
  */
 public class Lanzador {
     public static void main(String[] args) {
-        
+        Programa programa = new Programa();
+        programa.iniciar();
     }
 }

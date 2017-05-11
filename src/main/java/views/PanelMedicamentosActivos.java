@@ -5,10 +5,52 @@
  */
 package views;
 
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+
 /**
  *
  * @author Loli Pop
  */
-public class PanelMedicamentosActivos {
+public class PanelMedicamentosActivos extends JPanel {
+     
+    private JLabel medicamentosLabel;
+    String [] datos = {"Ibuprofeno","Amitriptilina","Vitamina C","Hipoglós","Ajsjs Yo "};
+
+    
+    
+    public PanelMedicamentosActivos(){
+        
+        initComponents();
+    
+    
+    }
+    
+    
+    public void initComponents(){
+
+        
+         GridLayout distribucion = new GridLayout(0,1);
+        this.setLayout(distribucion);
+        
+        medicamentosLabel = new JLabel("Medicamentos Totales");  
+        this.add(this.medicamentosLabel);
+        
+        JList lista = new JList(datos);
+     
+        lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        this.add(lista);
+        
+        
+        
+ 
+
+
+    }
+    
+    
     
 }

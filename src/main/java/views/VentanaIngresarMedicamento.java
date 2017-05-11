@@ -5,10 +5,28 @@
  */
 package views;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Loli Pop
  */
-public class VentanaIngresarMedicamento {
+public class VentanaIngresarMedicamento extends JFrame {
+
+    private PanelBotonesIM panelBotones;
+    private PanelIngresar panelIngresar;
     
+    
+    public VentanaIngresarMedicamento() {
+        
+        initComponents();
+    }
+
+    private void initComponents() {
+        panelBotones = new PanelBotonesIM();
+        panelIngresar = new PanelIngresar();
+       this.setTitle("Ingresar Medicamentos");
+       this.setSize(400,300);
+    }
+
 }
