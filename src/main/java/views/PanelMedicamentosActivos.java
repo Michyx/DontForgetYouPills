@@ -18,7 +18,7 @@ import javax.swing.ListSelectionModel;
 public class PanelMedicamentosActivos extends JPanel {
      
     private JLabel medicamentosLabel;
-    String [] datos = {"Ibuprofeno","Amitriptilina","Vitamina C","Hipoglós","Ajsjs Yo "};
+    String [] datos = {"Ibuprofeno","Amitriptilina","Vitamina C","Hipoglós"};
 
     
     

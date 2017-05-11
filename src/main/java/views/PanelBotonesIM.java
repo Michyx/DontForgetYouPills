@@ -5,6 +5,8 @@
  */
 package views;
 
+import java.awt.FlowLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -13,4 +15,30 @@ import javax.swing.JPanel;
  */
 public class PanelBotonesIM extends JPanel{
     
+     private JButton btnAceptar;
+     private JButton btnCancelar;
+
+    public PanelBotonesIM() {
+        initComponents();
+    }
+
+    private void initComponents() {
+        FlowLayout distribucion = new FlowLayout();
+        btnAceptar = new JButton("Aceptar");
+        btnCancelar = new JButton("Cancelar");
+        
+        this.add(btnAceptar);
+        this.add(btnCancelar);
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+     
+     
+     
 }

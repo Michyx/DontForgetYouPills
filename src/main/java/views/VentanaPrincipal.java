@@ -31,7 +31,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
          ventanaIM = new VentanaIngresarMedicamento();
         añadirComponentes();
        
-       
+       this.setResizable(false);
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.setTitle("Ventana Principal");
        this.setSize(400,300);
