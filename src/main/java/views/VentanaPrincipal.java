@@ -10,21 +10,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import principal.Programa;
 
 /**
  *
  * @author Loli Pop
  */
-public class VentanaPrincipal extends JFrame implements ActionListener {
+public class VentanaPrincipal extends JFrame implements ActionListener{
     
     private VentanaDetalle ventanaDetalle;
     private VentanaIngresarMedicamento ventanaIM;
     private PanelBotonesP panelBotones;
     private PanelProxAlarma panelAlarma;
     private PanelMedicamentosActivos panelMedicamentos;
-    
+    private Programa programa = new Programa();
     
     public VentanaPrincipal() {
+        programa = new Programa();
         initComponents();
     }
 
@@ -44,7 +46,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelBotones = new PanelBotonesP();
         panelAlarma = new PanelProxAlarma();
         panelMedicamentos = new PanelMedicamentosActivos();
-    
+       
         this.panelBotones.getBtnIngresar().addActionListener((ActionListener)this);
         this.panelBotones.getBtnEliminar().addActionListener((ActionListener)this);
         this.panelBotones.getBtnVerMedicamentos().addActionListener((ActionListener)this);
@@ -52,7 +54,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         this.add(panelBotones,BorderLayout.EAST);
         this.add(this.panelAlarma,BorderLayout.SOUTH);
         this.add(this.panelMedicamentos,BorderLayout.CENTER);
-        
+        this.panelMedicamentos.actualizar(this.programa.getInventario());
         
     };
 
@@ -60,12 +62,23 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(this.panelBotones.getBtnIngresar() == e.getSource()) {
             this.ventanaIM.setVisible(true);
+         
+            
         }
          if(this.panelBotones.getBtnEliminar()== e.getSource()) {
             JOptionPane.showMessageDialog(null, ("Exito eliminar"));
+               
+                this.panelMedicamentos.actualizar(this.programa.getInventario());
+               
+           
         }
           if(this.panelBotones.getBtnVerMedicamentos()== e.getSource()) {
             this.ventanaDetalle.setVisible(true);
+            
+        }
+          if (this.ventanaIM.isIngresar() == true) {
+           this.programa.setInventario(this.ventanaIM.nuevoMedicamento(this.programa.getInventario()));
+           this.panelMedicamentos.actualizar(this.programa.getInventario());
         }
     }
 }

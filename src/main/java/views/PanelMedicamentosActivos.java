@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
+import principal.Inventario;
 
 /**
  *
@@ -18,8 +19,8 @@ import javax.swing.ListSelectionModel;
 public class PanelMedicamentosActivos extends JPanel {
      
     private JLabel medicamentosLabel;
-    String [] datos = {"Ibuprofeno","Amitriptilina","Vitamina C","Hipoglós"};
-
+    private JList listaMedicamentos;
+    
     
     
     public PanelMedicamentosActivos(){
@@ -32,25 +33,32 @@ public class PanelMedicamentosActivos extends JPanel {
     
     public void initComponents(){
 
-        
-         GridLayout distribucion = new GridLayout(0,1);
+        GridLayout distribucion = new GridLayout(0, 1);
         this.setLayout(distribucion);
+
+        medicamentosLabel = new JLabel("Medicamentos Totales");
         
-        medicamentosLabel = new JLabel("Medicamentos Totales");  
         this.add(this.medicamentosLabel);
         
-        JList lista = new JList(datos);
-     
-        lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        this.add(lista);
+        this.listaMedicamentos = new JList();
         
-        
-        
- 
+        listaMedicamentos.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        this.add(listaMedicamentos);
 
 
     }
     
-    
-    
+    public void actualizar(Inventario inventario) {
+        
+        String [] datos = new String[inventario.getSize()];
+        for (int i = 0; i < inventario.getSize(); i++) {
+            datos[i] = inventario.obtenerMedicamento(i).getNombre();
+        }
+        this.remove(this.listaMedicamentos);
+        this.listaMedicamentos = new JList(datos);
+        this.add(listaMedicamentos);
+        this.revalidate();
+        
+
+    }
 }

@@ -5,6 +5,7 @@
  */
 package principal;
 
+import java.util.Objects;
 import views.VentanaPrincipal;
 
 /**
@@ -12,10 +13,24 @@ import views.VentanaPrincipal;
  * @author Loli Pop
  */
 public class Programa {
-    
-    public void iniciar(){
-    VentanaPrincipal ventana= new VentanaPrincipal();
-    ventana.setVisible(true);
-    
+    private Inventario inventario;
+
+    public Programa() {
+        this.inventario = new Inventario();
+        this.inventario.añadirMedicamento(new Medicamento("Paracetamol", 0, 0, 0));
     }
+
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+
+
+
+   
+
 }

@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import principal.Inventario;
+import principal.Medicamento;
+import app.ArgumentoNoValido;
 
 /**
  *
@@ -19,7 +22,9 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
 
     private PanelBotonesIM panelBotones;
     private PanelIngresar panelIngresar;
-
+    private boolean ingresar;
+    private ArgumentoNoValido ArgumentoNoValido;
+    
     public VentanaIngresarMedicamento() {
 
         initComponents();
@@ -46,12 +51,72 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e) {
         if (this.panelBotones.getBtnAceptar() == e.getSource()) {
             JOptionPane.showMessageDialog(null, ("Exito aceptar"));
-            this.setVisible(false);
-        }
-        if (this.panelBotones.getBtnCancelar() == e.getSource()) {
+            ingresar = true;
             this.setVisible(false);
             
         }
+        if (this.panelBotones.getBtnCancelar() == e.getSource()) {
+            this.setVisible(false);
+            ingresar = false;
+        }
     }
 
+    public PanelIngresar getPanelIngresar() {
+        return panelIngresar;
+    }
+
+    public PanelBotonesIM getPanelBotones() {
+        return panelBotones;
+    }
+    
+    
+    public Inventario nuevoMedicamento(Inventario inventario){
+      
+        String nombre = null;
+        double dosis = 0;
+        double dias = 0;
+        double intervalo = 0;
+        
+        try {
+             if(!Double.isNaN((Double.parseDouble(this.panelIngresar.getIngreseDosis().getText())))){    
+                    dosis = (Double.parseDouble(panelIngresar.getIngreseDosis().getText()));
+             }else{
+             throw new ArgumentoNoValido();
+             } 
+             if(!Double.isNaN((Double.parseDouble(this.panelIngresar.getIngreseDias().getText())))){
+                    dias = (Double.parseDouble(panelIngresar.getIngreseDias().getText()));
+             }else{
+             throw new ArgumentoNoValido();    
+             }
+             if(!Double.isNaN((Double.parseDouble(this.panelIngresar.getIngreseIntervalo().getText())))){
+                    intervalo = (Double.parseDouble(panelIngresar.getIngreseIntervalo().getText()));
+             }else{
+             throw new ArgumentoNoValido();
+             }
+             if(this.panelIngresar.getIngreseNombre().getText()!=null){
+                    nombre = this.panelIngresar.getIngreseNombre().getText();
+             }else{
+             throw new ArgumentoNoValido();
+             }
+             
+        } catch (ArgumentoNoValido e) {
+           e.lanzarMensajeDosis();
+        
+        
+        }
+ 
+        inventario.añadirMedicamento(new Medicamento(nombre,dias,dosis,intervalo));
+    
+    return inventario;
+    }
+
+    
+    public boolean isIngresar() {
+        return ingresar;
+    }
+
+    public void setIngresar(boolean ingresar) {
+        this.ingresar = ingresar;
+    }
+    
 }

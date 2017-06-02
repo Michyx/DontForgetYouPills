@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package app;
 
 import principal.Programa;
+import views.VentanaPrincipal;
 
-/**
- *
- * @author Loli Pop
- */
+
 public class Lanzador {
     public static void main(String[] args) {
-        Programa programa = new Programa();
-        programa.iniciar();
+        VentanaPrincipal ventana= new VentanaPrincipal();
+        ventana.setVisible(true);
     }
 }

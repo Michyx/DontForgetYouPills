@@ -25,6 +25,8 @@ public class PanelIngresar extends JPanel {
     private JLabel ingreseDosisLabel;
     private JLabel ingreseDiasLabel;
     private JLabel ingreseIntervaloLabel;
+    
+ 
 
     public PanelIngresar() {
         initComponents();
@@ -58,4 +60,22 @@ public class PanelIngresar extends JPanel {
         this.ingreseIntervaloLabel = new JLabel("Ingrese el intervalo de horas");
 
     }
+
+    public JTextField getIngreseNombre() {
+        return ingreseNombre;
+    }
+
+    public JTextField getIngreseDosis() {
+        return ingreseDosis;
+    }
+
+    public JTextField getIngreseDias() {
+        return ingreseDias;
+    }
+
+    public JTextField getIngreseIntervalo() {
+        return ingreseIntervalo;
+    }
+    
+    
 }
