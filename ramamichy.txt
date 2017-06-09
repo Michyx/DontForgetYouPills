@@ -1,0 +1,6 @@
+git add * (añadir todos los archivos cambiados)
+git commit -m "mensaje" (comentar)
+git status (verificar estado de los archivos con los del git)
+git branch rama (crea una rama nueva)
+git checkout rama (comprobar si estás en la rama deseada)
+git push origin rama (subir a la rama x)
