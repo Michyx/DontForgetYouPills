@@ -12,14 +12,7 @@ public class PanelBotonesDetalle extends JPanel{
     
     JButton btnOk, btnExportar; 
 
-    public JButton getBtnOk() {
-        return btnOk;
-    }
 
-    public JButton getBtnExportar() {
-        return btnExportar;
-    }
-    
     
     
     public PanelBotonesDetalle(){
@@ -40,5 +33,12 @@ public class PanelBotonesDetalle extends JPanel{
         this.add(btnExportar);
 
     }
+    public JButton getBtnOk() {
+        return btnOk;
+    }
 
+    public JButton getBtnExportar() {
+        return btnExportar;
+    }
+    
 }

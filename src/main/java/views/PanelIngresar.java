@@ -7,6 +7,7 @@ package views;
 
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -25,8 +26,6 @@ public class PanelIngresar extends JPanel {
     private JLabel ingreseDosisLabel;
     private JLabel ingreseDiasLabel;
     private JLabel ingreseIntervaloLabel;
-    
- 
 
     public PanelIngresar() {
         initComponents();
@@ -76,6 +75,93 @@ public class PanelIngresar extends JPanel {
     public JTextField getIngreseIntervalo() {
         return ingreseIntervalo;
     }
-    
-    
+
+    public boolean validarTextField() {
+        boolean validacion = true;
+        if (this.ingreseDias.getText().equals("") || this.ingreseDosis.getText().equals("")
+                || this.ingreseIntervalo.getText().equals("") || this.ingreseNombre.getText().equals("")) {
+            validacion = false;
+        }
+        return validacion;
+    }
+
+    public boolean validarHoras(double desde, double hasta) {
+        double horas = 0;
+        boolean error = false;
+
+        error = false;
+        try {
+            horas = Integer.parseInt(this.ingreseIntervalo.getText());
+
+        } catch (Exception e) {
+            error = true;
+            JOptionPane.showMessageDialog(null, "Horas no validas", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (horas < desde || horas > hasta) {
+            JOptionPane.showMessageDialog(null, "Se permite desde "+desde+" hasta "+hasta+" horas");
+            error = true;
+        }
+
+        return error;
+    }
+
+    public boolean validarDosis(double desde, double hasta) {
+        double dosis = 0;
+        boolean error = false;
+
+        error = false;
+        try {
+            dosis = Integer.parseInt(this.ingreseDosis.getText());
+
+        } catch (Exception e) {
+            error = true;
+          JOptionPane.showMessageDialog(null, "Dosis no valida", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (dosis < desde || dosis > hasta) {
+               JOptionPane.showMessageDialog(null, "Se permite desde "+desde+" hasta "+hasta+" mg");
+            error = true;
+        }
+
+        return error;
+    }
+
+    public boolean validarDias(double desde, double hasta) {
+        double dias = 0;
+        boolean error = false;
+
+        error = false;
+        try {
+            dias = Integer.parseInt(this.ingreseDias.getText());
+
+        } catch (Exception e) {
+            error = true;
+            JOptionPane.showMessageDialog(null, "Dias no validos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (dias < desde || dias > hasta) {
+               JOptionPane.showMessageDialog(null, "Se permite desde "+desde+" hasta "+hasta+" dias");
+            error = true;
+        }
+
+        return error;
+    }
+
+    public boolean validarNombre(int hasta) {
+        String nombre = "";
+        boolean error = false;
+
+        error = false;
+        try {
+            nombre = this.ingreseNombre.getText();
+
+        } catch (Exception e) {
+            error = true;
+            System.out.println("Nombre no valido");
+        }
+        if (nombre.length() > hasta) {
+               JOptionPane.showMessageDialog(null, "Maximo "+hasta+ " caracteres");
+            error = true;
+        }
+
+        return error;
+    }
 }

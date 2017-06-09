@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import principal.Medicamento;
 
 
 public class VentanaDetalle extends JFrame implements ActionListener{
@@ -57,7 +58,7 @@ public class VentanaDetalle extends JFrame implements ActionListener{
     
      public void actionPerformed(ActionEvent e) {
         if (this.botones.getBtnOk() == e.getSource()) {
-            setVisible(false);
+            this.dispose();
             
         }
         if (this.botones.getBtnExportar() == e.getSource()) {
@@ -65,5 +66,12 @@ public class VentanaDetalle extends JFrame implements ActionListener{
         }
      
     }    
-    
+    public void cargarDetalle(Medicamento medicamento) {
+        
+        this.detalle.getNombre().setText("Nombre : "+medicamento.getNombre());
+        this.detalle.getDosis().setText("Dosis :"+Double.toString(medicamento.getDosis())+" mg");
+        this.detalle.getCada().setText("Cada "+Double.toString(medicamento.getHoras())+" horas");
+
+
+    }
 }

@@ -24,7 +24,7 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
     private PanelIngresar panelIngresar;
     private boolean ingresar;
     private ArgumentoNoValido ArgumentoNoValido;
-    
+
     public VentanaIngresarMedicamento() {
 
         initComponents();
@@ -49,15 +49,10 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (this.panelBotones.getBtnAceptar() == e.getSource()) {
-            JOptionPane.showMessageDialog(null, ("Exito aceptar"));
-            ingresar = true;
-            this.setVisible(false);
-            
-        }
+
         if (this.panelBotones.getBtnCancelar() == e.getSource()) {
-            this.setVisible(false);
-            ingresar = false;
+            this.resetTextField();
+            this.dispose();
         }
     }
 
@@ -68,49 +63,46 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
     public PanelBotonesIM getPanelBotones() {
         return panelBotones;
     }
-    
-    
-    public Inventario nuevoMedicamento(Inventario inventario){
-      
+
+    public Inventario nuevoMedicamento(Inventario inventario) {
+
         String nombre = null;
         double dosis = 0;
         double dias = 0;
         double intervalo = 0;
-        
+
         try {
-             if(!Double.isNaN((Double.parseDouble(this.panelIngresar.getIngreseDosis().getText())))){    
-                    dosis = (Double.parseDouble(panelIngresar.getIngreseDosis().getText()));
-             }else{
-             throw new ArgumentoNoValido();
-             } 
-             if(!Double.isNaN((Double.parseDouble(this.panelIngresar.getIngreseDias().getText())))){
-                    dias = (Double.parseDouble(panelIngresar.getIngreseDias().getText()));
-             }else{
-             throw new ArgumentoNoValido();    
-             }
-             if(!Double.isNaN((Double.parseDouble(this.panelIngresar.getIngreseIntervalo().getText())))){
-                    intervalo = (Double.parseDouble(panelIngresar.getIngreseIntervalo().getText()));
-             }else{
-             throw new ArgumentoNoValido();
-             }
-             if(this.panelIngresar.getIngreseNombre().getText()!=null){
-                    nombre = this.panelIngresar.getIngreseNombre().getText();
-             }else{
-             throw new ArgumentoNoValido();
-             }
-             
+            if (panelIngresar.validarDosis(0, 800) == false) {
+                dosis = (Double.parseDouble(panelIngresar.getIngreseDosis().getText()));
+            } else {
+                throw new ArgumentoNoValido();
+            }
+            if (panelIngresar.validarDias(1, 360) == false) {
+                dias = (Double.parseDouble(panelIngresar.getIngreseDias().getText()));
+            } else {
+                throw new ArgumentoNoValido();
+            }
+            if (panelIngresar.validarHoras(1, 24) == false) {
+                intervalo = (Double.parseDouble(panelIngresar.getIngreseIntervalo().getText()));
+            } else {
+                throw new ArgumentoNoValido();
+            }
+            if (panelIngresar.validarNombre(16) == false) {
+                nombre = this.panelIngresar.getIngreseNombre().getText();
+            } else {
+                throw new ArgumentoNoValido();
+            }
+
         } catch (ArgumentoNoValido e) {
-           e.lanzarMensajeDosis();
-        
-        
+            e.lanzarMensajeDosis();
+
         }
- 
-        inventario.añadirMedicamento(new Medicamento(nombre,dias,dosis,intervalo));
-    
-    return inventario;
+
+        inventario.añadirMedicamento(new Medicamento(nombre, dias, dosis, intervalo));
+
+        return inventario;
     }
 
-    
     public boolean isIngresar() {
         return ingresar;
     }
@@ -118,5 +110,11 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
     public void setIngresar(boolean ingresar) {
         this.ingresar = ingresar;
     }
-    
+
+    public void resetTextField() {
+        this.panelIngresar.getIngreseDias().setText("");
+        this.panelIngresar.getIngreseDosis().setText("");
+        this.panelIngresar.getIngreseNombre().setText("");
+        this.panelIngresar.getIngreseIntervalo().setText("");
+    }
 }

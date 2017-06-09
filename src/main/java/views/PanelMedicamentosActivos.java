@@ -10,17 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import principal.Inventario;
 
 /**
  *
  * @author Loli Pop
  */
-public class PanelMedicamentosActivos extends JPanel {
+public class PanelMedicamentosActivos extends JPanel implements ListSelectionListener {
      
     private JLabel medicamentosLabel;
     private JList listaMedicamentos;
-    
+    private int indice;
     
     
     public PanelMedicamentosActivos(){
@@ -43,6 +45,9 @@ public class PanelMedicamentosActivos extends JPanel {
         this.listaMedicamentos = new JList();
         
         listaMedicamentos.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+       
+       this.indice = listaMedicamentos.getSelectedIndex();
+              
         this.add(listaMedicamentos);
 
 
@@ -56,9 +61,30 @@ public class PanelMedicamentosActivos extends JPanel {
         }
         this.remove(this.listaMedicamentos);
         this.listaMedicamentos = new JList(datos);
+        this.listaMedicamentos.addListSelectionListener((ListSelectionListener)this);
         this.add(listaMedicamentos);
+       
         this.revalidate();
         
 
+    }
+
+    public int getIndice() {
+        return indice;
+    }
+
+    public void setIndice(int indice) {
+        this.indice = indice;
+    }
+
+    public JList getListaMedicamentos() {
+        return listaMedicamentos;
+    }
+    
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        this.indice = listaMedicamentos.getAnchorSelectionIndex();
+        System.out.println("Selected index : " + this.indice);
     }
 }

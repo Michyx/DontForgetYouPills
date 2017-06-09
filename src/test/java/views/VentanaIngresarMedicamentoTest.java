@@ -53,14 +53,5 @@ public class VentanaIngresarMedicamentoTest {
         
         
     }
-    @Test
-    public void dosisTest(){
-     VentanaIngresarMedicamento ven = new VentanaIngresarMedicamento();
-        Inventario inv = new Inventario();
-        ven.getPanelIngresar().getIngreseDosis().setText(null);
-        inv.añadirMedicamento(new Medicamento("Paracetamol", Double.parseDouble(ven.getPanelIngresar().getIngreseDias().getText()), 0, 0));
-    
-    
-    }
-   
+
 }

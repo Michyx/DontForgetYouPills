@@ -35,7 +35,15 @@ public class Inventario {
             throw new NullPointerException("No encontrado");
         }
 
-    }    @Override
+    }   
+    public void eliminarMedicamento(int indice){
+   
+   
+   this.medicamentos.remove(indice);
+   
+   }
+    
+    @Override
    
     public boolean equals(Object obj) {
         if (this == obj) {
