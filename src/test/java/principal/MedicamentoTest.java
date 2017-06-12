@@ -5,6 +5,7 @@
  */
 package principal;
 
+import modelo.Medicamento;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

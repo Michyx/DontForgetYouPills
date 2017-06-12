@@ -12,8 +12,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import principal.Inventario;
-import principal.Medicamento;
+import modelo.Inventario;
+import modelo.Medicamento;
 
 /**
  *

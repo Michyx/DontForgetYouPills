@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principal;
+package modelo;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Loli Pop
- */
+
 public class Inventario {
     private ArrayList<Medicamento> medicamentos;
 

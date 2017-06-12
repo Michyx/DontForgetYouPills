@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package principal;
 
-/**
- *
- * @author Loli Pop
- */
+package modelo;
+
+
 public class Medicamento {
 
     private String nombre;
@@ -60,6 +53,11 @@ public class Medicamento {
 
     public double getHoras() {
         return horas;
+    }
+
+    @Override
+    public String toString() {
+        return "Medicamento{" + "nombre=" + nombre + ", duracion=" + duracion + ", dosis=" + dosis + ", horas=" + horas + '}';
     }
     
     

@@ -1,7 +1,7 @@
 
 package app;
 
-import principal.Programa;
+import modelo.Programa;
 import views.VentanaPrincipal;
 
 

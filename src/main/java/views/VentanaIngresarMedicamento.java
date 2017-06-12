@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import principal.Inventario;
-import principal.Medicamento;
+import modelo.Inventario;
+import modelo.Medicamento;
 import app.ArgumentoNoValido;
 
 /**

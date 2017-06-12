@@ -4,10 +4,12 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import principal.Medicamento;
+import modelo.Medicamento;
 
 
 public class VentanaDetalle extends JFrame implements ActionListener{
@@ -15,6 +17,7 @@ public class VentanaDetalle extends JFrame implements ActionListener{
    PanelBotonesDetalle botones;  
    PanelMedicamentos horarios; 
    PanelInformacion detalle;
+   private static final Logger LOGER = Logger.getLogger(VentanaDetalle.class.getName());
     
     public VentanaDetalle(){
     
@@ -48,12 +51,6 @@ public class VentanaDetalle extends JFrame implements ActionListener{
         this.setResizable(false);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
-        
-        
-        
-   
-    
-    
     }
     
      public void actionPerformed(ActionEvent e) {
@@ -72,6 +69,11 @@ public class VentanaDetalle extends JFrame implements ActionListener{
         this.detalle.getDosis().setText("Dosis :"+Double.toString(medicamento.getDosis())+" mg");
         this.detalle.getCada().setText("Cada "+Double.toString(medicamento.getHoras())+" horas");
 
+        LOGER.log(Level.INFO,"Nombre :{0}",this.detalle.getNombre());
+        LOGER.log(Level.INFO,"Dosis  :{1}",this.detalle.getDosis());
+        LOGER.log(Level.INFO,"Cada   :{2}",this.detalle.getCada());
+        
+    
 
     }
 }
