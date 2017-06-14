@@ -8,9 +8,11 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import principal.Programa;
+import modelo.Programa;
 
 /**
  *
@@ -24,6 +26,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private PanelProxAlarma panelAlarma;
     private PanelMedicamentosActivos panelMedicamentos;
     private Programa programa = new Programa();
+    private static final Logger LOGER = Logger.getLogger(VentanaPrincipal.class.getName());
 
     public VentanaPrincipal() {
         programa = new Programa();
@@ -61,7 +64,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
     public void eliminar() {
         this.programa.getInventario().eliminarMedicamento(this.panelMedicamentos.getIndice());
-        System.out.println(this.panelMedicamentos.getIndice());
+      //System.out.println(this.panelMedicamentos.getIndice());
+        LOGER.log(Level.WARNING,"Eliminado :{0}",this.panelMedicamentos.getIndice());
     }
 
     @Override
@@ -96,6 +100,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             if (this.ventanaIM.getPanelIngresar().validarTextField() == true) {
                 this.programa.setInventario(this.ventanaIM.nuevoMedicamento(this.programa.getInventario()));
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
+                
+                LOGER.log(Level.INFO,"Medicamento nuevo:{0} ", this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()).toString());
+                
                 this.ventanaIM.dispose();
                 this.ventanaIM.resetTextField();
             } else {
@@ -103,5 +110,4 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             }
         }
     }
-
 }

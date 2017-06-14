@@ -6,24 +6,23 @@
 package views;
 
 import java.awt.GridLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import principal.Inventario;
+import modelo.Inventario;
 
-/**
- *
- * @author Loli Pop
- */
+
 public class PanelMedicamentosActivos extends JPanel implements ListSelectionListener {
      
     private JLabel medicamentosLabel;
     private JList listaMedicamentos;
     private int indice;
-    
+    private static final Logger LOGER = Logger.getLogger(PanelMedicamentosActivos.class.getName());
     
     public PanelMedicamentosActivos(){
         
@@ -81,10 +80,11 @@ public class PanelMedicamentosActivos extends JPanel implements ListSelectionLis
         return listaMedicamentos;
     }
     
-
     @Override
     public void valueChanged(ListSelectionEvent e) {
         this.indice = listaMedicamentos.getAnchorSelectionIndex();
-        System.out.println("Selected index : " + this.indice);
+       // System.out.println("Selected index : " + this.indice);
+        LOGER.log(Level.INFO,"Indice: {0}",this.indice);
+   
     }
 }
