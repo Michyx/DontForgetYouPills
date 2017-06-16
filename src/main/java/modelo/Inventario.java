@@ -39,7 +39,10 @@ public class Inventario {
    this.medicamentos.remove(indice);
    
    }
+    public void limpiar(){
+    this.medicamentos.clear();
     
+    }
     @Override
    
     public boolean equals(Object obj) {
@@ -53,7 +56,7 @@ public class Inventario {
        
         return true;
     }
-
+  
     public int getSize(){
     return this.medicamentos.size();
     }

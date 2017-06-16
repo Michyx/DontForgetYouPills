@@ -1,6 +1,8 @@
 
 package modelo;
 
+import com.sun.org.apache.bcel.internal.generic.D2F;
+
 
 public class Medicamento {
 
@@ -8,7 +10,9 @@ public class Medicamento {
     private double duracion;
     private double dosis;
     private double horas;
-
+    private double dosisTotal;
+    private double horasRestantes;
+    private double numeroDosis;
     public Medicamento(String nombre, double dias, double dosis, double horas) {
         
         if(nombre != null){
@@ -35,6 +39,7 @@ public class Medicamento {
         }else{
             throw new NullPointerException("horas nulo");
         }
+        
     }
 
     
@@ -54,11 +59,23 @@ public class Medicamento {
     public double getHoras() {
         return horas;
     }
-
-    @Override
-    public String toString() {
-        return "Medicamento{" + "nombre=" + nombre + ", duracion=" + duracion + ", dosis=" + dosis + ", horas=" + horas + '}';
+    
+   
+    public void calcularHorasRestantes(){
+    this.horasRestantes = this.getDuracion()* 24;
+    }
+    public void calcularNumeroDosis(){
+    this.numeroDosis = this.horasRestantes/this.horas;
+    }
+    public void setHorasRestantes(double horasRestantes) {
+        this.horasRestantes = horasRestantes;
     }
     
-    
+     @Override
+
+   
+    public String toString() {
+        return "Medicamento{" + "nombre=" + nombre + ", duracion=" + duracion + ", dosis=" + dosis + ", horas=" + horas + ", dosisTotal=" + dosisTotal + ", horasRestantes=" + horasRestantes + '}';
+    }
+ 
 }

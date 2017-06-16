@@ -6,6 +6,10 @@
 package views;
 
 import java.awt.FlowLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -15,7 +19,9 @@ import javax.swing.JTextField;
  * @author Loli Pop
  */
 public class PanelProxAlarma extends JPanel {
-    private JTextField ingresar;
+   private JLabel ingresar;
+    private Date fecha = new Date();
+    private String hora;
 
     public PanelProxAlarma() {
         initComponents();
@@ -26,7 +32,11 @@ public class PanelProxAlarma extends JPanel {
         FlowLayout distribucion = new FlowLayout();
         this.setLayout(distribucion);   
         JSeparator separator = new JSeparator();
-        this.ingresar = new JTextField("Proxima Alarma : 13:00");
+        
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        hora = (formatoHora.format(fecha));
+        
+        this.ingresar = new JLabel(hora);
         this.add(separator);
         this.add(this.ingresar);
         

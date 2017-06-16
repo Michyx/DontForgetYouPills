@@ -69,11 +69,5 @@ public class VentanaDetalle extends JFrame implements ActionListener{
         this.detalle.getDosis().setText("Dosis :"+Double.toString(medicamento.getDosis())+" mg");
         this.detalle.getCada().setText("Cada "+Double.toString(medicamento.getHoras())+" horas");
 
-        LOGER.log(Level.INFO,"Nombre :{0}",this.detalle.getNombre());
-        LOGER.log(Level.INFO,"Dosis  :{1}",this.detalle.getDosis());
-        LOGER.log(Level.INFO,"Cada   :{2}",this.detalle.getCada());
-        
-    
-
     }
 }

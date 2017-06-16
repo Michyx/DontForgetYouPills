@@ -65,7 +65,6 @@ public class PanelMedicamentosActivos extends JPanel implements ListSelectionLis
         this.listaMedicamentos = new JList(datos);
         this.listaMedicamentos.addListSelectionListener((ListSelectionListener)this);
         this.add(listaMedicamentos);
-       
         this.revalidate();
         
 

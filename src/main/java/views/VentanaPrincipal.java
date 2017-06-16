@@ -8,16 +8,13 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import modelo.Programa;
+import manager.Programa;
 
-/**
- *
- * @author Loli Pop
- */
 public class VentanaPrincipal extends JFrame implements ActionListener {
 
     private VentanaDetalle ventanaDetalle;
@@ -28,7 +25,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private Programa programa = new Programa();
     private static final Logger LOGER = Logger.getLogger(VentanaPrincipal.class.getName());
 
-    public VentanaPrincipal() {
+    public VentanaPrincipal() throws FileNotFoundException {
         programa = new Programa();
         initComponents();
     }
@@ -64,8 +61,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
     public void eliminar() {
         this.programa.getInventario().eliminarMedicamento(this.panelMedicamentos.getIndice());
-      //System.out.println(this.panelMedicamentos.getIndice());
-        LOGER.log(Level.WARNING,"Eliminado :{0}",this.panelMedicamentos.getIndice());
+        LOGER.log(Level.WARNING, "Eliminado :{0}", this.panelMedicamentos.getIndice());
     }
 
     @Override
@@ -79,6 +75,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 System.out.println("Eliminando...");
                 System.out.println(this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()).getNombre());
                 eliminar();
+                this.programa.guardar();
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un medicamento");
@@ -90,6 +87,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 this.ventanaDetalle.cargarDetalle(this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()));
                 this.ventanaDetalle.setVisible(true);
                 this.panelMedicamentos.setIndice(-1);
+                this.programa.guardar();
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un medicamento");
             }
@@ -99,10 +97,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         if (this.ventanaIM.getPanelBotones().getBtnAceptar() == e.getSource()) {
             if (this.ventanaIM.getPanelIngresar().validarTextField() == true) {
                 this.programa.setInventario(this.ventanaIM.nuevoMedicamento(this.programa.getInventario()));
+               this.programa.getInventario().obtenerMedicamento(this.programa.getInventario().getSize()-1).calcularHorasRestantes();
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
-                
-                LOGER.log(Level.INFO,"Medicamento nuevo:{0} ", this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()).toString());
-                
+                this.programa.guardar();
+
                 this.ventanaIM.dispose();
                 this.ventanaIM.resetTextField();
             } else {

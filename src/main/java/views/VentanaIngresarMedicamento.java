@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import modelo.Inventario;
 import modelo.Medicamento;
 import app.ArgumentoNoValido;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
     private PanelIngresar panelIngresar;
     private boolean ingresar;
     private ArgumentoNoValido ArgumentoNoValido;
+    private static final Logger LOGER = Logger.getLogger(VentanaIngresarMedicamento.class.getName());
 
     public VentanaIngresarMedicamento() {
 
@@ -97,8 +100,10 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
             e.lanzarMensajeDosis();
 
         }
-
+       
+        LOGER.log(Level.INFO, "Medicamento nuevo:{0} ",new Medicamento(nombre, dias, dosis, intervalo));
         inventario.añadirMedicamento(new Medicamento(nombre, dias, dosis, intervalo));
+       System.out.println("Tamaño del inventario: " +inventario.getSize());
 
         return inventario;
     }

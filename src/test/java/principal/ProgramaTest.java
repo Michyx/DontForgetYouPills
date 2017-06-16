@@ -5,7 +5,7 @@
  */
 package principal;
 
-import modelo.Programa;
+import manager.Programa;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
