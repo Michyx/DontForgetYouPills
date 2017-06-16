@@ -31,7 +31,7 @@ public class Medicamento {
         }
         
         if(!Double.isNaN(horas)){
-        this.horas = horas;    
+        this.horas = horas;   
         }else{
             throw new NullPointerException("horas nulo");
         }

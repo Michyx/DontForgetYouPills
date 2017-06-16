@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views;
 
 import java.awt.FlowLayout;
@@ -13,11 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
 
+
+
 public class PanelProxAlarma extends JPanel {
     private JLabel ingresar;
-    private String hora;
-    private Date fechaActual;
-
+    private String hora; 
+    private Date fecha = new Date();
+    
     public PanelProxAlarma() {
         initComponents();
     }
@@ -28,9 +26,8 @@ public class PanelProxAlarma extends JPanel {
         this.setLayout(distribucion);   
         JSeparator separator = new JSeparator();
         
-        Date fechaActual = new Date();
-        DateFormat fecha = new SimpleDateFormat("HH:mm:ss");
-        hora = (fecha.format(fechaActual));
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        hora = formatoHora .format(fecha);
         
         this.ingresar = new JLabel(hora);
         this.add(separator);

@@ -16,7 +16,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.Inventario;
 
-
+/**
+ *
+ * @author Loli Pop
+ */
 public class PanelMedicamentosActivos extends JPanel implements ListSelectionListener {
      
     private JLabel medicamentosLabel;

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views;
 
 import java.awt.BorderLayout;
@@ -14,10 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Programa;
 
-/**
- *
- * @author Loli Pop
- */
+
+
 public class VentanaPrincipal extends JFrame implements ActionListener {
 
     private VentanaDetalle ventanaDetalle;
@@ -26,6 +20,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private PanelProxAlarma panelAlarma;
     private PanelMedicamentosActivos panelMedicamentos;
     private Programa programa = new Programa();
+
     private static final Logger LOGER = Logger.getLogger(VentanaPrincipal.class.getName());
 
     public VentanaPrincipal() {
@@ -101,7 +96,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 this.programa.setInventario(this.ventanaIM.nuevoMedicamento(this.programa.getInventario()));
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
                 
-                LOGER.log(Level.INFO,"Medicamento nuevo:{0} ", this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()).toString());
+               //LOGER.log(Level.INFO,"Medicamento nuevo:{0} ", this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()).toString());
                 
                 this.ventanaIM.dispose();
                 this.ventanaIM.resetTextField();
