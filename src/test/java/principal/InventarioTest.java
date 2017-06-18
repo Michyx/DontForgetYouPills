@@ -5,6 +5,8 @@
  */
 package principal;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import modelo.Inventario;
 import modelo.Medicamento;
 import org.junit.After;
@@ -46,10 +48,10 @@ public class InventarioTest {
     public void añadirMedicamentoTest(){
         Inventario i = new Inventario();
         int tamañoEsperado = 3;
-        
-        i.añadirMedicamento(new Medicamento("Naproxeno", 0, 0, 0));
-        i.añadirMedicamento(new Medicamento("Naproxeno mas caro", 0, 0, 0));
-        i.añadirMedicamento(new Medicamento("Naproxeno Barato", 0, 0, 0));
+        Calendar fecha = new GregorianCalendar();
+        i.añadirMedicamento(new Medicamento("Naproxeno", 0, 0, 0,fecha));
+        i.añadirMedicamento(new Medicamento("Naproxeno mas caro", 0, 0, 0,fecha));
+        i.añadirMedicamento(new Medicamento("Naproxeno Barato", 0, 0, 0,fecha));
         
         assertEquals(tamañoEsperado, i.getSize());
     }

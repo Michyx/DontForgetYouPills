@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
 import modelo.Inventario;
 import modelo.Medicamento;
 import app.ArgumentoNoValido;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +28,7 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
     private PanelIngresar panelIngresar;
     private boolean ingresar;
     private ArgumentoNoValido ArgumentoNoValido;
+    private static final Logger LOGER = Logger.getLogger(VentanaIngresarMedicamento.class.getName());
 
     public VentanaIngresarMedicamento() {
 
@@ -87,7 +92,7 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
             } else {
                 throw new ArgumentoNoValido();
             }
-            if (panelIngresar.validarNombre(16) == false) {
+            if (panelIngresar.validarNombre(30) == false) {
                 nombre = this.panelIngresar.getIngreseNombre().getText();
             } else {
                 throw new ArgumentoNoValido();
@@ -97,8 +102,10 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
             e.lanzarMensajeDosis();
 
         }
-
-        inventario.añadirMedicamento(new Medicamento(nombre, dias, dosis, intervalo));
+        Calendar fecha = new GregorianCalendar();
+        LOGER.log(Level.INFO, "Medicamento nuevo:{0} ",new Medicamento(nombre, dias, dosis, intervalo,fecha));
+        inventario.añadirMedicamento(new Medicamento(nombre, dias, dosis, intervalo,fecha));
+       System.out.println("Tamaño del inventario: " +inventario.getSize());
 
         return inventario;
     }

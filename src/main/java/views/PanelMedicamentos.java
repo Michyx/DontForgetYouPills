@@ -21,7 +21,7 @@ public class PanelMedicamentos extends JPanel{
                         {"Domingo","09.00"},
                         };              
                        
-    
+    private DefaultTableModel dtm;
     public PanelMedicamentos(){
     
         initComponents();
@@ -32,14 +32,22 @@ public class PanelMedicamentos extends JPanel{
         
         GridLayout distribucion = new GridLayout(0,1);
         setLayout(distribucion);
-        DefaultTableModel dtm = new DefaultTableModel(data,detalle);
+        this.dtm = new DefaultTableModel(data,detalle);
         JTable table = new JTable(dtm); 
- 
+
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table.doLayout();
-        
+
         this.add(table);
-        
+
     }
-    
+
+    public void cargar(String[][] horas) {
+        this.removeAll();
+        this.dtm = new DefaultTableModel(horas, detalle);
+        JTable table = new JTable(dtm);
+        this.add(table);
+        revalidate();
+    }
+
 }

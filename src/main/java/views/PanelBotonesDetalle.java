@@ -1,8 +1,10 @@
 
 package views;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -10,9 +12,9 @@ import javax.swing.JPanel;
 public class PanelBotonesDetalle extends JPanel{
     
     
-    JButton btnOk, btnExportar; 
-
-
+    private JButton btnOk, btnExportar; 
+    private Color color = new Color(173,214,229);
+    private ImageIcon iconoOk, iconoExportar;
     
     
     public PanelBotonesDetalle(){
@@ -26,10 +28,17 @@ public class PanelBotonesDetalle extends JPanel{
         GridLayout distribucion = new GridLayout();
         this.setLayout(distribucion);
         
-        btnOk = new JButton("Ok");
-        this.add(btnOk);
+        this.btnOk = new JButton("Ok");
+        btnOk.setBackground(color);
+        ImageIcon iconoOk = new ImageIcon("resources/botonAceptar.png");
+        btnOk.setIcon(iconoOk);
         
-        btnExportar = new JButton("Exportar");
+        this.btnExportar = new JButton("Exportar");
+        btnExportar.setBackground(color);
+        ImageIcon iconoExportar = new ImageIcon("resources/botonExportar.png");
+        btnExportar.setIcon(iconoExportar);
+        
+        this.add(btnOk);
         this.add(btnExportar);
 
     }

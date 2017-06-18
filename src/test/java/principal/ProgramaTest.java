@@ -5,7 +5,8 @@
  */
 package principal;
 
-import modelo.Programa;
+import java.io.FileNotFoundException;
+import manager.Programa;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class ProgramaTest {
 
   
     @Test
-    public void testEqualsInventario() {
+    public void testEqualsInventario() throws FileNotFoundException {
      Programa p = new Programa();
      Inventario i = new Inventario();
         assertEquals(p.getInventario(),i );

@@ -29,11 +29,12 @@ public class PanelInformacion extends JPanel{
         total = new JLabel("Dosis total: N/A");
  
         this.add(nombre);
-        this.add(dosis);
         this.add(cada);
+        this.add(dosis);
+        this.add(total);
         this.add(inicio);
         this.add(termino);
-        this.add(total);
+        
     
     }
 

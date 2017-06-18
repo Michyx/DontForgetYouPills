@@ -1,31 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Loli Pop
- */
+
 public class PanelBotonesIM extends JPanel{
     
      private JButton btnAceptar;
      private JButton btnCancelar;
-
+     private Color color = new Color(173,214,229);
+     private ImageIcon iconoAceptar, iconoCancelar;
+     
     public PanelBotonesIM() {
         initComponents();
     }
 
     private void initComponents() {
         FlowLayout distribucion = new FlowLayout();
-        btnAceptar = new JButton("Aceptar");
-        btnCancelar = new JButton("Cancelar");
+        
+        this.btnAceptar = new JButton("Aceptar");
+        btnAceptar.setBackground(color);
+        ImageIcon iconoAceptar = new ImageIcon("resources/botonAceptar.png");
+        btnAceptar.setIcon(iconoAceptar);
+        
+        
+        this.btnCancelar = new JButton("Cancelar");
+        btnCancelar.setBackground(color);
+        ImageIcon iconoCancelar = new ImageIcon("resources/botonCancelar.png");
+        btnCancelar.setIcon(iconoCancelar);
         
         this.add(btnAceptar);
         this.add(btnCancelar);

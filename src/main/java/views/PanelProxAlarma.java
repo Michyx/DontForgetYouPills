@@ -1,21 +1,31 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package views;
 
 import java.awt.FlowLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-
-
+/**
+ *
+ * @author Loli Pop
+ */
 public class PanelProxAlarma extends JPanel {
-    private JLabel ingresar;
-    private String hora; 
-    private Date fecha = new Date();
+   private JLabel fecha;
     
+    private Calendar fechaActual;
+
     public PanelProxAlarma() {
         initComponents();
     }
@@ -26,12 +36,14 @@ public class PanelProxAlarma extends JPanel {
         this.setLayout(distribucion);   
         JSeparator separator = new JSeparator();
         
-        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
-        hora = formatoHora .format(fecha);
+        this.fechaActual = new GregorianCalendar();
+        SimpleDateFormat formateador = new SimpleDateFormat("'Dia' : dd 'de' MMMM 'de' yyyy '/Hora' HH : mm : ss", new Locale("es_ES"));
+        String label = formateador.format(fechaActual.getTime());
         
-        this.ingresar = new JLabel(hora);
+        
+        this.fecha = new JLabel(label);
         this.add(separator);
-        this.add(this.ingresar);
+        this.add(this.fecha);
         
     }
 }

@@ -5,6 +5,7 @@
  */
 package views;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,16 +17,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.Inventario;
 
-/**
- *
- * @author Loli Pop
- */
 public class PanelMedicamentosActivos extends JPanel implements ListSelectionListener {
      
     private JLabel medicamentosLabel;
     private JList listaMedicamentos;
     private int indice;
     private static final Logger LOGER = Logger.getLogger(PanelMedicamentosActivos.class.getName());
+    
     
     public PanelMedicamentosActivos(){
         
@@ -41,15 +39,12 @@ public class PanelMedicamentosActivos extends JPanel implements ListSelectionLis
         this.setLayout(distribucion);
 
         medicamentosLabel = new JLabel("Medicamentos Totales");
-        
         this.add(this.medicamentosLabel);
         
         this.listaMedicamentos = new JList();
-        
         listaMedicamentos.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-       
-       this.indice = listaMedicamentos.getSelectedIndex();
-              
+
+        this.indice = listaMedicamentos.getSelectedIndex();
         this.add(listaMedicamentos);
 
 
@@ -65,7 +60,6 @@ public class PanelMedicamentosActivos extends JPanel implements ListSelectionLis
         this.listaMedicamentos = new JList(datos);
         this.listaMedicamentos.addListSelectionListener((ListSelectionListener)this);
         this.add(listaMedicamentos);
-       
         this.revalidate();
         
 

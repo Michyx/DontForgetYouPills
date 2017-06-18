@@ -5,44 +5,42 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 
-public class Calendario {
-
-    private Date fechaActual;
+public class Calendario implements Runnable{
+    
+    private Calendar c;
+    private Thread hilo;
 
     public Calendario() {
-        
-        Date fechaActual = new Date();
-        System.out.println(fechaActual.getTime());
-        System.out.println(fechaActual);
-        System.out.println("---------------------------------------------");
+        hilo = new Thread(this);
+        hilo.start();
+        this.c = new GregorianCalendar();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("es_ES"));
+        System.out.println(formateador.format(c.getTime()));
+    }
 
-        //Formateando la fecha:
-        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
-        DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Son las: " + formatoHora.format(fechaActual) + " de fecha: " + formatoFecha.format(fechaActual));
+    public void calcula() {
 
-        //Fecha actual desglosada:
-        Calendar fecha = Calendar.getInstance();
-        int año = fecha.get(Calendar.YEAR);
-        int mes = fecha.get(Calendar.MONTH) + 1;
-        int dia = fecha.get(Calendar.DAY_OF_MONTH);
-        int hora = fecha.get(Calendar.HOUR_OF_DAY);
-        int minuto = fecha.get(Calendar.MINUTE);
-        int segundo = fecha.get(Calendar.SECOND);
+        Locale l = new Locale("es", "CL");
+        this.c = new GregorianCalendar();
 
-        System.out.println("Fecha Actual: " + dia + "/" + (mes) + "/" + año);
-        System.out.printf("Hora Actual: %02d:%02d:%02d %n", hora, minuto, segundo);
-        System.out.println("-------------Fecha desglosada----------------");
-        System.out.println("El año es: " + año);
-        System.out.println("El mes es: " + mes);
-        System.out.println("El día es: " + dia);
-        System.out.printf("La hora es: %02d %n", hora);
-        System.out.printf("El minuto es: %02d %n", minuto);
-        System.out.printf("El segundo es: %02d %n", segundo);
 
+    
+    }
+    @Override
+    public void run() {
+       Thread ct = Thread.currentThread();
+        while (ct == hilo) {
+          calcula();
+          
+            
+        }
+   
     }
 
 }

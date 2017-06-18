@@ -1,13 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package views;
 
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayer;
 
-
 public class Sonido {
-    
-    private BasicPlayer player;
+        private BasicPlayer player;
 
     public BasicPlayer getPlayer() {
         return player;
@@ -17,9 +19,9 @@ public class Sonido {
     public void agregarSonido() throws Exception{
 
     player = new BasicPlayer();
-    String ruta = ("/resources/BrunoMars.wav");
+    String ruta = ("resources\\alarma.wav");
     abrirFichero(ruta);
-
+    play();
     }
 
     public void play() throws Exception{
