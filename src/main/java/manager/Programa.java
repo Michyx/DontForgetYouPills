@@ -22,11 +22,9 @@ public class Programa {
         this.gestor = new GestorDatos("data\\output.json");
         this.inventario = new Inventario();
         this.calendario = new Calendario();
+        
         cargar();
-//        this.inventario.añadirMedicamento(new Medicamento("Paracetamol", 0, 0, 0));
-//        this.inventario.añadirMedicamento(new Medicamento("Ibuprofeno", 0, 0, 0));
-//        this.inventario.añadirMedicamento(new Medicamento("Amitriptilina", 0, 0, 0));
-//        this.inventario.añadirMedicamento(new Medicamento("Hipoglós", 0, 0, 0));
+        
         
     }
     public Inventario getInventario() {

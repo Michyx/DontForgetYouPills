@@ -59,9 +59,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
     }
 
-    public void eliminar() {
+    public void eliminar() throws Exception {
         this.programa.getInventario().eliminarMedicamento(this.panelMedicamentos.getIndice());
         LOGER.log(Level.WARNING, "Eliminado :{0}", this.panelMedicamentos.getIndice());
+        Sonido s = new Sonido();
+        s.agregarSonido();
     }
 
     @Override
@@ -74,7 +76,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             if (this.panelMedicamentos.getIndice() != -1) {
                 System.out.println("Eliminando...");
                 System.out.println(this.programa.getInventario().obtenerMedicamento(this.panelMedicamentos.getIndice()).getNombre());
-                eliminar();
+                try {
+                    eliminar();
+                } catch (Exception ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 this.programa.guardar();
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
             } else {
