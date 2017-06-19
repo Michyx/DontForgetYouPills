@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import modelo.Inventario;
 import modelo.Medicamento;
 import app.ArgumentoNoValido;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Loli Pop
- */
 public class VentanaIngresarMedicamento extends JFrame implements ActionListener {
 
     private PanelBotonesIM panelBotones;
@@ -80,32 +71,38 @@ public class VentanaIngresarMedicamento extends JFrame implements ActionListener
             if (panelIngresar.validarDosis(0, 800) == false) {
                 dosis = (Double.parseDouble(panelIngresar.getIngreseDosis().getText()));
             } else {
+                panelIngresar.getIngreseDosis().setText("");
                 throw new ArgumentoNoValido();
             }
             if (panelIngresar.validarDias(1, 360) == false) {
+
                 dias = (Double.parseDouble(panelIngresar.getIngreseDias().getText()));
             } else {
+                panelIngresar.getIngreseDias().setText("");
                 throw new ArgumentoNoValido();
             }
             if (panelIngresar.validarHoras(1, 24) == false) {
                 intervalo = (Double.parseDouble(panelIngresar.getIngreseIntervalo().getText()));
             } else {
+                panelIngresar.getIngreseIntervalo().setText("");
                 throw new ArgumentoNoValido();
             }
             if (panelIngresar.validarNombre(30) == false) {
                 nombre = this.panelIngresar.getIngreseNombre().getText();
             } else {
+                panelIngresar.getIngreseNombre().setText("");
                 throw new ArgumentoNoValido();
             }
 
         } catch (ArgumentoNoValido e) {
-            e.lanzarMensajeDosis();
-
         }
+
         Calendar fecha = new GregorianCalendar();
-        LOGER.log(Level.INFO, "Medicamento nuevo:{0} ",new Medicamento(nombre, dias, dosis, intervalo,fecha));
-        inventario.añadirMedicamento(new Medicamento(nombre, dias, dosis, intervalo,fecha));
-       System.out.println("Tamaño del inventario: " +inventario.getSize());
+        Date fechaInicio = new Date();
+        fechaInicio = fecha.getTime();
+        LOGER.log(Level.INFO, "Medicamento nuevo:{0} ", new Medicamento(nombre, dias, dosis, intervalo, fechaInicio));
+        inventario.añadirMedicamento(new Medicamento(nombre, dias, dosis, intervalo, fechaInicio));
+        System.out.println("Tamaño del inventario: " + inventario.getSize());
 
         return inventario;
     }

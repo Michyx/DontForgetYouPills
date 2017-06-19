@@ -6,6 +6,7 @@
 package principal;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import modelo.Medicamento;
 import org.junit.After;
@@ -42,35 +43,35 @@ public class MedicamentoTest {
 
     @Test(expected = NullPointerException.class)
     public void testConstructorDias() {
-        Calendar fecha = new GregorianCalendar();
+        Date fecha = new  Date();
         Medicamento medicamento = new Medicamento("Paracetamol", Double.NaN, 7.6, 3.3, fecha);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructorNombre() {
-        Calendar fecha = new GregorianCalendar();
+       Date fecha = new  Date();
         Medicamento medicamento = new Medicamento(null, 5.5, 7.6, 3.3, fecha);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructorHoras() {
-        Calendar fecha = new GregorianCalendar();
+         Date fecha = new  Date();
         Medicamento medicamento = new Medicamento("Hipoglós", 5.5, 7.6, Double.NaN, fecha);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructorDosis() {
-        Calendar fecha = new GregorianCalendar();
+        Date fecha = new  Date();
         Medicamento medicamento = new Medicamento("Vitamina C", 5.5, Double.NaN, 3.3, fecha);
 
     }
 
     @Test
     public void constructor() {
-        Calendar fecha = new GregorianCalendar();
+         Date fecha = new  Date();
         Medicamento medicamento = new Medicamento("Ibuprofeno", 5, 600, 4.5, fecha);
 
     }

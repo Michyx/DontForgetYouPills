@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package views;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -21,7 +15,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private VentanaDetalle ventanaDetalle;
     private VentanaIngresarMedicamento ventanaIM;
     private PanelBotonesP panelBotones;
-    private PanelProxAlarma panelAlarma;
+    private PanelHoraActual panelAlarma;
     private PanelMedicamentosActivos panelMedicamentos;
     private Programa programa = new Programa();
     private static final Logger LOGER = Logger.getLogger(VentanaPrincipal.class.getName());
@@ -35,6 +29,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         ventanaDetalle = new VentanaDetalle();
         ventanaIM = new VentanaIngresarMedicamento();
         añadirComponentes();
+       
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Ventana Principal");
@@ -44,14 +39,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private void añadirComponentes() {
 
         panelBotones = new PanelBotonesP();
-        panelAlarma = new PanelProxAlarma();
+        panelAlarma = new PanelHoraActual();
         panelMedicamentos = new PanelMedicamentosActivos();
 
         this.panelBotones.getBtnIngresar().addActionListener((ActionListener) this);
         this.panelBotones.getBtnEliminar().addActionListener((ActionListener) this);
         this.panelBotones.getBtnVerMedicamentos().addActionListener((ActionListener) this);
         this.ventanaIM.getPanelBotones().getBtnAceptar().addActionListener(this);
-
+        this.ventanaDetalle.getBotones().getBtnExportar().addActionListener(this);
         this.add(panelBotones, BorderLayout.EAST);
         this.add(this.panelAlarma, BorderLayout.SOUTH);
         this.add(this.panelMedicamentos, BorderLayout.CENTER);
@@ -62,13 +57,12 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     public void eliminar() {
         this.programa.getInventario().eliminarMedicamento(this.panelMedicamentos.getIndice());
         LOGER.log(Level.WARNING, "Eliminado :{0}", this.panelMedicamentos.getIndice());
-       
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         if (this.panelBotones.getBtnIngresar() == e.getSource()) {
             this.ventanaIM.setVisible(true);
         }
@@ -83,8 +77,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 }
                 this.programa.guardar();
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
+                this.panelMedicamentos.setIndice(this.panelMedicamentos.getIndice()-1);
+                
             } else {
-                 this.panelMedicamentos.setIndice(0);
+                this.panelMedicamentos.setIndice(0);
                 JOptionPane.showMessageDialog(null, "Seleccione un medicamento");
             }
 
@@ -104,15 +100,19 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         if (this.ventanaIM.getPanelBotones().getBtnAceptar() == e.getSource()) {
             if (this.ventanaIM.getPanelIngresar().validarTextField() == true) {
                 this.programa.setInventario(this.ventanaIM.nuevoMedicamento(this.programa.getInventario()));
-               this.programa.getInventario().obtenerMedicamento(this.programa.getInventario().getSize()-1).calcularDatos();
+                this.programa.getInventario().obtenerMedicamento(this.programa.getInventario().getSize() - 1).calcularDatos();
                 this.panelMedicamentos.actualizar(this.programa.getInventario());
                 this.programa.guardar();
-                this.programa.programarAlarmas();
                 this.ventanaIM.dispose();
                 this.ventanaIM.resetTextField();
+                this.programa.programarAlarmas();
             } else {
                 JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
             }
+        }
+        if (this.ventanaDetalle.getBotones().getBtnExportar() == e.getSource()) {
+            JOptionPane.showMessageDialog(null, "Exportando en lastExport.txt");
+            this.programa.Exportar(this.panelMedicamentos.getIndice());
         }
     }
 }

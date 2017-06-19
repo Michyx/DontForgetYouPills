@@ -11,10 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Loli Pop
- */
 public class PanelIngresar extends JPanel {
 
     private JTextField ingreseNombre;
@@ -98,7 +94,7 @@ public class PanelIngresar extends JPanel {
             JOptionPane.showMessageDialog(null, "Horas no validas", "Error", JOptionPane.ERROR_MESSAGE);
         }
         if (horas < desde || horas > hasta) {
-            JOptionPane.showMessageDialog(null, "Se permite desde "+desde+" hasta "+hasta+" horas");
+            JOptionPane.showMessageDialog(null, "Se permite desde " + desde + " hasta " + hasta + " horas");
             error = true;
         }
 
@@ -115,10 +111,10 @@ public class PanelIngresar extends JPanel {
 
         } catch (Exception e) {
             error = true;
-          JOptionPane.showMessageDialog(null, "Dosis no valida", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Dosis no valida", "Error", JOptionPane.ERROR_MESSAGE);
         }
         if (dosis < desde || dosis > hasta) {
-               JOptionPane.showMessageDialog(null, "Se permite desde "+desde+" hasta "+hasta+" mg");
+            JOptionPane.showMessageDialog(null, "Se permite desde " + desde + " hasta " + hasta + " mg");
             error = true;
         }
 
@@ -138,7 +134,7 @@ public class PanelIngresar extends JPanel {
             JOptionPane.showMessageDialog(null, "Dias no validos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         if (dias < desde || dias > hasta) {
-               JOptionPane.showMessageDialog(null, "Se permite desde "+desde+" hasta "+hasta+" dias");
+            JOptionPane.showMessageDialog(null, "Se permite desde " + desde + " hasta " + hasta + " dias");
             error = true;
         }
 
@@ -158,7 +154,7 @@ public class PanelIngresar extends JPanel {
             System.out.println("Nombre no valido");
         }
         if (nombre.length() > hasta) {
-               JOptionPane.showMessageDialog(null, "Maximo "+hasta+ " caracteres");
+            JOptionPane.showMessageDialog(null, "Maximo " + hasta + " caracteres");
             error = true;
         }
 

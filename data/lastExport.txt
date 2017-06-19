@@ -1,0 +1,28 @@
+Medicamento : Amoxicilina
+Cada : 8.0
+Dosis : 600.0
+Cantidad de dias : 7.0
+Fecha de inicio : Dia : 19 de June de 2017 /Hora 01 : 18 : 32
+Fecha de termino : Dia : 26 de June de 2017 /Hora 01 : 18 : 32
+Fechas : 
+Dia : 19 | Hora: 9 : 18 : 32
+Dia : 19 | Hora: 17 : 18 : 32
+Dia : 20 | Hora: 1 : 18 : 32
+Dia : 20 | Hora: 9 : 18 : 32
+Dia : 20 | Hora: 17 : 18 : 32
+Dia : 21 | Hora: 1 : 18 : 32
+Dia : 21 | Hora: 9 : 18 : 32
+Dia : 21 | Hora: 17 : 18 : 32
+Dia : 22 | Hora: 1 : 18 : 32
+Dia : 22 | Hora: 9 : 18 : 32
+Dia : 22 | Hora: 17 : 18 : 32
+Dia : 23 | Hora: 1 : 18 : 32
+Dia : 23 | Hora: 9 : 18 : 32
+Dia : 23 | Hora: 17 : 18 : 32
+Dia : 24 | Hora: 1 : 18 : 32
+Dia : 24 | Hora: 9 : 18 : 32
+Dia : 24 | Hora: 17 : 18 : 32
+Dia : 25 | Hora: 1 : 18 : 32
+Dia : 25 | Hora: 9 : 18 : 32
+Dia : 25 | Hora: 17 : 18 : 32
+Dia : 26 | Hora: 1 : 18 : 32
